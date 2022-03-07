@@ -11,6 +11,10 @@ pipeline {
         cleanWs()
       }
     }
-
+    stage('Deploy') {
+      steps{
+        sh 'docker-compose up -d'
+      }
+    }
   }
 }
