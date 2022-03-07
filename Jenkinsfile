@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         tool(name: 'MAVEN_LOCAL', type: 'maven')
-        sh 'mvn clean package'
+        sh 'echo $MAVEN_LOCAL'
       }
     }
 
