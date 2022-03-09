@@ -4,10 +4,11 @@ pipeline {
     maven 'MAVEN_LOCAL'
   }
   stages {
-    stage('Deploy') {
-      steps{
-        sh 'ls -la'
-        sh 'docker-compose up -d'
+    stage('Build') {
+      steps {
+        sh 'mvn clean package -Dquarkus.package.type=uber-jar -DskipTests'
+        archiveArtifacts artifacts: 'target/tasks-*-runner.jar', followSymlinks: false
+        cleanWs()
       }
     }
   }
