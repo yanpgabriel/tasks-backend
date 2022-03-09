@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Deploy') {
       steps{
+        sh 'ls -la'
         sh 'docker-compose up -d'
       }
     }
